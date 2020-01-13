@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './data';
+const { users, catData } = data;
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+console.log(catData);  //I'm getting a promise here as expected because 
+                      //this isn't waiting for fetchData in the data module
+                      //to complete
+
+async function App () {
+  const greeting = 'starwars data'
+  const data = await catData; //when I try to await fetchData() from the data module to complete
+  console.log(data);          // I get a react error 'Objects are not valid as a React child'
+  return ( 
+    <div className="App">     
+      <h2>{greeting.toUpperCase()}</h2>
+      <hr></hr>
+
     </div>
   );
 }
