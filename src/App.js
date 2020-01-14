@@ -1,21 +1,24 @@
 import React from 'react';
 import './App.css';
-import data from './data';
-const { users, catData } = data;
+import fakeData from './fakeData';
+const { userList, companyList } = fakeData;
 
-console.log(catData);  //I'm getting a promise here as expected because 
-                      //this isn't waiting for fetchData in the data module
-                      //to complete
+//user.company
+//company.companyName
+function App () {
+  const greeting = 'faker data'
 
-async function App () {
-  const greeting = 'starwars data'
-  const data = await catData; //when I try to await fetchData() from the data module to complete
-  console.log(data);          // I get a react error 'Objects are not valid as a React child'
+  console.log(userList, companyList)
   return ( 
     <div className="App">     
       <h2>{greeting.toUpperCase()}</h2>
       <hr></hr>
-
+      <ul>
+        {userList.map(user => {
+          return (<li key={user.id}>{user.name} from {user.state}
+            works for {companyList.find(company => company.id === user.id).company}</li>)
+        })}
+      </ul>
     </div>
   );
 }
