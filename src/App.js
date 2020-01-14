@@ -15,8 +15,13 @@ function App () {
       <hr></hr>
       <ul>
         {userList.map(user => {
-          return (<li key={user.id}>{user.name} from {user.state}
-            works for {companyList.find(company => company.id === user.id).name}</li>)
+          return (<li key={user.userId}>{user.name} from {user.state} works 
+          for {companyList.reduce((acc, company) => {
+            if (company.companyId === user.company) {
+              acc += ` ${company.name}`;
+            }
+            return acc;
+          }, '')}</li>)
         })}
       </ul>
     </div>

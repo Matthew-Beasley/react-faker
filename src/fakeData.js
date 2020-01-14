@@ -7,8 +7,8 @@ const getUsers = () => {
         users.push({
             name: faker.name.firstName(),
             state: faker.address.state(),
-            id: users.length,
-            company: faker.company.companyName()
+            userId: users.length,
+            company: users.length
         })
     }
     return users
@@ -20,7 +20,7 @@ const getCompanies = () => {
         companies.push ({
             name: faker.company.companyName(),
             state: faker.address.state(),
-            Id: companies.length
+            companyId: companies.length
         })
     }
     return companies;
