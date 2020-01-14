@@ -16,7 +16,7 @@ function App () {
       <ul>
         {userList.map(user => {
           return (<li key={user.id}>{user.name} from {user.state}
-            works for {companyList.find(company => company.id === user.id).company}</li>)
+            works for {companyList.find(company => company.id === user.id).name}</li>)
         })}
       </ul>
     </div>
